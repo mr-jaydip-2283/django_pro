@@ -1,0 +1,103 @@
+{% load humanize %}
+<style>
+    #uni_modal .modal-footer {
+        display: none;
+    }
+    .details-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .details-table th, .details-table td {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+    }
+    .details-table th {
+        background-color: #f8f9fa;
+        text-align: left;
+        font-weight: 500;
+        color: #4a4a4a;
+        width: 40%;
+    }
+    .details-table td {
+        font-weight: bold;
+    }
+    .badge {
+        font-size: 0.9rem;
+    }
+    .close-button {
+        background-color: #f8f9fa;
+        border-color: #ced4da;
+        color: #495057;
+        margin-top: 20px;
+    }
+    .close-button:hover {
+        background-color: #e2e6ea;
+        color: #212529;
+    }
+</style>
+
+<div class="container-fluid">
+    <table class="details-table">
+        <tr>
+            <th>Employee ID/Code</th>
+            <td>{{ employee.code }}</td>
+        </tr>
+        <tr>
+            <th>Fullname</th>
+            <td>{{ employee.firstname }} {{ employee.middlename }} {{ employee.lastname }}</td>
+        </tr>
+        <tr>
+            <th>Gender</th>
+            <td>{{ employee.gender }}</td>
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td>{{ employee.dob|date:'M d, Y' }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ employee.email }}</td>
+        </tr>
+        <tr>
+            <th>Contact</th>
+            <td>{{ employee.contact }}</td>
+        </tr>
+        <tr>
+            <th>Address</th>
+            <td>{{ employee.address }}</td>
+        </tr>
+        <tr>
+            <th>Department</th>
+            <td>{{ employee.department_id }}</td>
+        </tr>
+        <tr>
+            <th>Position</th>
+            <td>{{ employee.position_id }}</td>
+        </tr>
+        <tr>
+            <th>Date Hired</th>
+            <td>{{ employee.date_hired|date:'M d, Y' }}</td>
+        </tr>
+        <tr>
+            <th>Salary</th>
+            <td>{{ employee.salary|intcomma }}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>
+                {% if employee.status == 1 %}
+                <span class="badge bg-primary rounded-pill px-3">Active</span>
+                {% else %}
+                <span class="badge bg-secondary rounded-pill px-3">Inactive</span>
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+
+    <!-- Close Button -->
+    <div class="d-flex w-100 align-items-center justify-content-end">
+        <button class="btn close-button border btn-sm rounded-0 d-flex align-items-center" type="button" data-bs-dismiss="modal">
+            <i class="material-icons mdc-list-item__start-detail mdc-drawer-item-icon" aria-hidden="true">close</i> Close
+        </button>
+    </div>
+</div>
